@@ -20,6 +20,12 @@
         state: present
       become: yes
 
+    - name: Kill previous server if running
+      shell:
+        pkill runserver
+      ignore_errors: true
+      become: true
+
     - name: remove old repo
       shell:
           rm -rf /home/{{ ansible_user }}/pis-etap3
