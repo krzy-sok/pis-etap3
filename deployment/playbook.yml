@@ -51,6 +51,6 @@
 
     - name: run django
       shell:
-        nohup python3 manage.py runserver 0:8000 &
+        nohup ../venv/bin/python3 manage.py runserver 0:8000 &
       args:
         chdir: /home/{{ ansible_user }}/pis-etap3
