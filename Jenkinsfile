@@ -9,7 +9,7 @@ pipeline{
     }
     stages{
         stage('Build'){
-            steps{
+            steps {
                 echo "Build stage ..."
                 sh '''
                 python3 -m venv .venv
@@ -21,7 +21,7 @@ pipeline{
             }
         }
         stage('Test'){
-            steps{
+            steps {
                 echo "Test stage..."
                 sh '''
                 . ./venv/bin/activate
@@ -29,9 +29,10 @@ pipeline{
                 '''
             }
         }
-        stage('Deliver')
-            steps{
+        stage('Deliver'){
+            steps {
                 echo "Deliver stage..."
             }
+        }
     }
 }
