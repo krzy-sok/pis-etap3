@@ -34,7 +34,7 @@ pipeline{
                 echo "Deliver stage..."
                 sh '''
                 cd deployment
-                ansible-playboook -i  inventory.yml playbook.yml
+                ansible-playbook -i  inventory.yml playbook.yml
                 '''
             }
         }

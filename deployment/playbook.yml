@@ -47,7 +47,7 @@
 
     - name: install dependencies
       shell:
-        ./venv/bin/pip3 install -r /home/{{ ansible_user }}/PIS-proj/requirements.txt
+        ./venv/bin/pip3 install -r /home/{{ ansible_user }}/pis-etap3/requirements.txt
 
     - name: run django
       shell:
