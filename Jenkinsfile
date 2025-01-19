@@ -14,7 +14,7 @@ pipeline{
                 sh '''
                 python3 -m venv .venv
                 .venv/bin/python --version
-                . ./venv/bin/activate
+                . ./.venv/bin/activate
                 python -m pip install -r requirements.txt
                 deactivate
                 '''
@@ -24,7 +24,7 @@ pipeline{
             steps {
                 echo "Test stage..."
                 sh '''
-                . ./venv/bin/activate
+                . ./.venv/bin/activate
                 python ./pis-etap3/mysite/tests/test_example.py
                 '''
             }
