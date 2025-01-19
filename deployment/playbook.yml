@@ -1,0 +1,54 @@
+# ansible-playbook -i inventory.yml playbook.yml
+---
+- name: Setup Project
+  hosts: all
+  become: true
+  vars:
+    ansible_user: "azureuser"
+
+  tasks:
+
+    - name: upgrade apt
+      shell: |
+        apt upgrade -y
+        apt update -y
+      become: yes
+
+    - name: Install pip for Python 3
+      apt:
+        name: python3-pip
+        state: present
+      become: yes
+
+    - name: remove old repo
+      shell:
+          rm -rf /home/{{ ansible_user }}/pis-etap3
+      ignore_errors: yes
+      become: yes
+
+    - name: clone repo
+      git:
+        repo: https://github.com/krzy-sok/pis-etap3.git
+        dest: /home/{{ ansible_user }}/pis-etap3
+        update: yes
+
+    - name: install python3 virtualenv
+      apt:
+        name: python3.12-venv
+      become: yes
+
+    - name: initialize virtualenv
+      shell:
+        python3 -m venv ./venv
+
+    - name: activate vitualenv
+      shell:
+        . ./venv/bin/activate
+
+    - name: install dependencies
+      shell:
+        ./venv/bin/pip3 install -r /home/{{ ansible_user }}/PIS-proj/requirements.txt
+
+    - name: run django
+      shell:
+        nohup python3 manage.py runserver 0:8000 &
