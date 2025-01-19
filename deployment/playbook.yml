@@ -43,7 +43,7 @@
 
     - name: activate vitualenv
       shell:
-        . ./venv/bin/activate
+        . /home/{{ ansible_user }}/venv/bin/activate
 
     - name: install dependencies
       shell:
@@ -52,3 +52,5 @@
     - name: run django
       shell:
         nohup python3 manage.py runserver 0:8000 &
+      args:
+        chdir: /home/{{ ansible_user }}/pis-etap3
