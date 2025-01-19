@@ -25,7 +25,7 @@ pipeline{
                 echo "Test stage..."
                 sh '''
                 . ./.venv/bin/activate
-                python ./pis-etap3/mysite/tests/test_example.py
+                python mysite/tests/test_example.py
                 '''
             }
         }
