@@ -1,0 +1,40 @@
+FROM jenkins/agent:latest
+USER root
+
+# install python 3.11
+RUN apt-get update
+RUN apt-get install -y python3
+RUN apt install -y python3.11-venv
+RUN apt-get install -y pip
+
+# install docker
+# RUN apt-get install ca-certificates curl -y
+# RUN install -m 0755 -d /etc/apt/keyrings
+# RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && chmod a+r /etc/apt/keyrings/docker.asc
+
+# RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+# RUN apt-get update
+
+
+# RUN apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# RUN usermod -aG docker jenkins
+# RUN curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+#     chmod +x /usr/local/bin/docker-compose
+
+# RUN mkdir -p /var/lib/docker
+# VOLUME /var/lib/docker
+
+# ENV TZ=Poland
+# RUN ln -snf /usr/share/zoneinfo/"${TZ}" /etc/localtime && echo "${TZ}" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
+
+#install ansible
+RUN apt update
+RUN apt install software-properties-common -y
+RUN apt-get install python3-launchpadlib -y
+RUN add-apt-repository --yes --update ppa:ansible/ansible
+RUN apt install ansible -y
+
+#install sshpass
+RUN apt install sshpass -y
