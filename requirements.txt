@@ -1,0 +1,2 @@
+unittest
+Django == 5.1.3
