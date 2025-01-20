@@ -3,7 +3,8 @@ pipeline{
         node{
             label 'agent-video'
         }
-    }triggers{
+    }
+    triggers{
         pollSCM '*/10 * * * *'
     }
     stages{
