@@ -37,6 +37,7 @@
         repo: https://github.com/krzy-sok/pis-etap3.git
         dest: /home/{{ ansible_user }}/pis-etap3
         update: yes
+        version: video
 
     - name: install python3 virtualenv
       apt:
